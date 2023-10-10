@@ -67,7 +67,7 @@ for i in range(len(date_list)):
 
     git_lang = df.dropna(axis = 0)
     # db연결
-    db = psycopg2.connect(host='localhost', dbname='project1', user='root', password='5432', port=5432)
+    db = psycopg2.connect(host='localhost', dbname='dbname', user='user', password='password', port=port)
 
     cursor = db.cursor()
     # DataFrame을 db에 저장
@@ -76,7 +76,7 @@ for i in range(len(date_list)):
         title = row['title']
         lang = row['language']
 
-        insert_query = "INSERT INTO project_git.git_lang (create_dt, title, lang) VALUES (%s, %s, %s)"
+        insert_query = "INSERT INTO tablename (create_dt, title, lang) VALUES (%s, %s, %s)"
         cursor.execute(insert_query, (create_dt, title, lang))
 
     # 변경사항 저장
